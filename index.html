@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!-- TypeIt package -->
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+<html>
+    <head>Generalizable Dexterous Grasp Generation via Contact Map Transfer
+        <meta charset="utf-8">
+        <meta name="description" content="Generalizable Dexterous Grasp Generation via Contact Map Transfer">
+        <meta name="keywords" content="Dexterous grasp generation, Contact map transfer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Contact Map Transfer with Conditional Diffusion Model for Generalizable Dexterous Grasp Generation</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MK2R9XDD88"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-MK2R9XDD88');
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+        <link rel="stylesheet" href="./static/css/bulma.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link rel="stylesheet" href="./static/css/index.css">
+        <link rel="icon" href="./static/paper_images/icon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+        <script src="./static/js/bulma-carousel.min.js"></script>
+        <script src="./static/js/bulma-slider.min.js"></script>
+        <script src="./static/js/index.js"></script>
+        <!-- Typing Effect JS -->
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/5.10.1/typeit.min.js"></script>
+        <!-- / Typing Effect JS -->
+        <style>
+    .bigdiv {
+      font-size: large;
+      font-family: "Courier New";
+      padding: 2rem;
+    }
+    p {
+      padding: 2rem;
+    }
+        </style>
+    </head>
+    <body>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h1 class="title is-2 publication-title">Contact Map Transfer with Conditional Diffusion <br> Model for Generalizable Dexterous Grasp Generation</h1>
+                            <h3 class="title is-4 conference-authors">
+                                <a target="_blank" href="https://neurips.cc/">
+                                    NeurIPS 2025
+                                </a>
+                            </h3>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    <a href="https://yiyao-ma.github.io/">Yiyao Ma</a>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://ck-kai.github.io/">Kai Chen<sup>†</sup></a>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <span>Kexin Zheng</span>
+                                    , and
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://www.cse.cuhk.edu.hk/~qdou/index.html">Qi Dou</a>
+                                </span>
+                            </div>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    Department of Computer Science and Engineering,
+                                    The Chinese University of Hong Kong.
+                                </span>
+                            </div>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block" style="font-size: 15px;">
+                                    <sup>†</sup>Corresponding Author
+                                </span>
+                            </div>
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- PDF Link. -->
+                                    <span class="link-block">
+                                        <a href="todo" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </span>
+                                            <span>Paper </span>
+                                        </a>
+                                    </span>
+                                    <!-- Code Link. -->
+                                    <span class="link-block">
+                                        <a href="https://github.com/dextrans" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code <em>(Coming Soon)</em></span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content has-text-centered">
+              <img src="./static/paper_images/teaser.png" style="width:1000px;">
+              <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                <b>Figure 1</b>.
+                Comparison of our proposed framework with existing analytical and generative methods.
+            </div>
+            </div>
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <!-- Abstract. -->
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Abstract</h2>
+                            <div class="content has-text-justified">
+                                <p>
+                                    Dexterous grasp generation is a fundamental challenge in robotics, requiring both grasp stability and adaptability across diverse objects and tasks. 
+Analytical methods ensure stable grasps but are inefficient and lack task adaptability, while generative approaches improve efficiency and task integration but generalize poorly to unseen objects and tasks due to data limitations.
+In this paper, we propose a transfer-based framework for dexterous grasp generation, leveraging a conditional diffusion model to transfer high-quality grasps from shape templates to novel objects within the same category. 
+Specifically, we reformulate the grasp transfer problem as the generation of an object contact map, incorporating object shape similarity and task specifications into the diffusion process. 
+To handle complex shape variations, we introduce a dual mapping mechanism, capturing intricate geometric relationship between shape templates and novel objects.
+Beyond the contact map, we derive two additional object-centric maps, the part map and direction map, to encode finer contact details for more stable grasps. 
+We then develop a cascaded conditional diffusion model framework to jointly transfer these three maps, ensuring their intra-consistency. 
+Finally, we introduce a robust grasp recovery mechanism, identifying reliable contact points and optimizing grasp configurations efficiently.
+Extensive experiments demonstrate the superiority of our proposed method. Our approach effectively balances grasp quality, generation efficiency, and generalization performance across various tasks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Abstract. -->
+                </div>
+            </section>
+            
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Methodology</h2>
+                            <h3 class="title is-4">Conditional Diffusion Model for Contact Map Transfer</h3>
+                            <div class="content has-text-justified">
+                                <!-- Add image -->
+                                <div class="figure" style="align: left; text-align:center;">
+                                    <img
+                                        src="./static/paper_images/method_contact.png"
+                                        alt="img description"
+                                        width="1000"
+                                    >
+                                    <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                        <b>Figure 2</b>. Our conditional diffusion model learns to transfer contact maps via a template-target framework. 
+                                    </div>
+                                    <br>
+                                </div>
+                                To handle the complex shape variations across diverse objects, we introduce a dual mapping mechanism within conditional diffusion.
+                                This mechanism explicitly models the dual mapping relationships between the template shape and the reconstructed template contact map, and between the noise and the contact map of the novel object.
+                                In this way, the diffusion model effectively captures the intricate geometric similarities between the shape template and the novel object under different task specifications, enabling the generation of an accurate contact map aligned with the intended grasping task.
+                            </div>
+                            <br>
+                            <h3 class="title is-4">Cascaded Conditional Diffusion for Joint Contact, Part, and Direction Transfer</h3>
+                            <div class="content has-text-justified">
+                                <!-- Add image -->
+                                <div class="figure" style="align: left; text-align:center;">
+                                    <img
+                                        src="./static/paper_images/method_hierarchy.png"
+                                        alt="img description"
+                                        width="400"
+                    
+                                    >
+                                    <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                        <b>Figure 3</b>. Overview of the cascaded diffusion framework.
+                                    </div>
+                                    <br>
+                                </div>
+                                To achieve more stable and dexterous grasping, we further derive two additional object-centric maps, the part map and the direction map, which provide richer information about the contact regions and the grasping orientations. 
+                                To jointly transfer three object-centric maps from the shape template to the novel object, we develop a cascaded conditional diffusion framework.
+                                This cascaded design enables a progressive generation process, ensuring intra-consistency among the three maps and preserving coherent contact, part, and direction information throughout the transfer process.
+                                Based on the transferred three object-centric maps, we design a robust mechanism to automatically identify object points with reliable part and direction predictions. 
+                                Finally, we recover the grasp configuration parameters through a fast and robust optimization scheme, ensuring the stability and feasibility of the generated dexterous grasps for novel objects.
+                                <!-- <ul>
+                                    <li>
+                                        <b>(a) Skeleton curve modeling.</b>
+                                        Under the Piecewise Constant Curvature (PCC) assumption, we can determine the skeleton curve using a set of control points.
+
+                                    </li>
+                                    <li>
+                                        <b>(b) Cylinder instantiation.</b>
+                                        Based on the candidate factors, COAT
+                then prompts another LLM to annotate or fetch the structured values of the unstructured data. With the annotated
+                structured data.
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </section>
+        <!--new section-->
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-full-width has-text-centered">
+                        <h2 class="title is-3">Results</h2>
+                        <div class="content has-text-justified is-centered">
+                            <b><h5>Quality evaluation in task-agnostic grasping.</h5></b>
+                            As can be observed, both our method and the analytical methods achieve a high grasp success rate across various objects.
+                            It indicates that our method can effectively transfer dexterous grasps from a template to diverse novel objects, maintaining high grasp quality even without performing complex force-closure-based optimization for each novel object.
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/paper_images/table1.png"
+                                style="width:800px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <div class="content has-text-justified is-centered" style="color: gray; font-size: 10pt;">
+                                <br>
+                                <b>Table 1</b>.
+                                Performance comparison with different task-agnostic grasp generation methods. 
+                                The best results are in <b>bold</b>.
+                                <i>Ours-Contact</i> denotes the result with only the transferred contact map, while <i>Ours</i> denotes the result after using the jointly transferred contact, part and direction maps.
+                            </div>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/paper_images/result_contact_transfer.png"
+                                style="width:800px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 4</b>. Qualitative comparison results with Tink for contact map transfer on novel objects.
+                            </div>
+                        </div>
+                        <br>
+                        <div class="content has-text-justified is-centered">
+                            <b><h5>Generalization evaluation in task-oriented grasping.</h5></b>
+                            Our method effectively transfers grasps from shape templates to diverse novel objects while maintaining high grasp quality and strong alignment with task specifications. 
+                            Without requiring retraining on new object categories, our method can be directly applied to novel categories to generate stable dexterous grasps for a wide range of manipulation tasks.
+                            These results indicate the superior generalization capability of the proposed method for dexterous grasp generation.
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/paper_images/table2.png"
+                                style="width:800px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Table 2</b>. Performance comparison on Seen and Unseen Categories across different methods. Cont. and Consis. are two metrics used to evaluate the alignment of the generated grasp with the task specifications. The best results are in <b>bold</b>.
+                            </div>
+                        </div>
+                        <!-- <div class="content has-text-centered">
+                            <img
+                                src="./static/paper_images/table3.png"
+                                style="width:700px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Table 3</b>. Quantitative comparison of generative metrics with generative methods on novel categories.
+                            </div>
+                        </div> -->
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/paper_images/result_task_cmp.png"
+                                style="width:800px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 5</b>. Qualitative comparison with generative methods on unseen objects across diverse tasks.
+                            </div>
+                        </div>
+                        <br>
+                        <div class="content has-text-justified is-centered">
+                            <b><h5>Real world experiments</h5></b>
+                            We conducted real-world dexterous grasping experiments on a self-developed humanoid robotic platform 
+                            equipped with an Inspire dexterous hand mounted at the end of the robot arm. 
+                            our method can effectively transfer the contact map from template objects to novel, noisy objects, 
+                            and achieve an average success rate of 70% across the tested categories, 
+                            demonstrating the practical applicability of our approach and its robustness to real-world observation noise.
+                        </div> 
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/paper_images/real_world.png"
+                                style="width:900px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <div class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 6</b>. Visualization of the real-world experiments results.
+                                For each object, the left, middle, and right images represent the 
+                                template contact map, the transferred contact map on a novel real-world
+                                object, and the recovered dexterous grasp, respectively.
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">Citation</h2>
+                Welcome to check our paper for more details of the research work. 
+                <!-- If there is any question, please feel free to contact us. </br> -->
+                If you find our paper and repo useful, please consider to cite:
+                <pre><code>TODO: Add citation</code></pre>
+                <br>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <p>
+                                Thanks for the source template from
+                                <a href="https://github.com/nerfies/nerfies.github.io">here</a>
+                                .
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
